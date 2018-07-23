@@ -1,5 +1,5 @@
 # coding: utf-8
-import pandas as pd 
+import pandas as pd
 import talib
 import numpy as np #computing multidimensionla arrays
 import datetime
@@ -56,21 +56,21 @@ while True:
     df.columns=['timestart','open','high','low','close','?','timeend','?','?','?','?','?']
     df.timestart = [datetime.datetime.fromtimestamp(i/1000) for i in df.timestart.values]
     df.timeend = [datetime.datetime.fromtimestamp(i/1000) for i in df.timeend.values]
-    
+
     # Compute RSI after fixing data
     float_data = [float(x) for x in df.close.values]
     np_float_data = np.array(float_data)
     rsi = talib.RSI(np_float_data, 14)
     df['rsi'] = rsi
-    
+
     # Compute StochRSI using RSI values in Stochastic function
     mystochrsi = Stoch(df.rsi, df.rsi, df.rsi, 3, 3, 14)
     df['MyStochrsiK'],df['MyStochrsiD'] = mystochrsi
-    
+
 #################################### End of Main #############################################
 # WARNING: If Logging is removed uncomment the next line.
 # time.sleep(1) # Sleep for 1 second. So IP is not rate limited. Can be faster. Up to 1200 requests per minute.
-    
+
 #################################### Logging #################################################
     newestcandlestart = df.timestart.astype(str).iloc[-1] #gets last time
     newestcandleend = df.timeend.astype(str).iloc[-1] #gets current time?
@@ -84,9 +84,8 @@ while True:
     sleeptime = (t.second)
     if sleeptime == 0 or sleeptime ==30:
         logger.info(newestcandleclose + " "
-                    + newestcandleRSI + " " 
-                    + newestcandleK + " " 
+                    + newestcandleRSI + " "
+                    + newestcandleK + " "
                     + newestcandleD )
         time.sleep(28)
 ##############################################################################################
-

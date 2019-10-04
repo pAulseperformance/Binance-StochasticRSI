@@ -1,3 +1,4 @@
 TA-Lib
 numpy
 pandas
+python-binance

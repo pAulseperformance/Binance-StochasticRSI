@@ -35,3 +35,8 @@ Date                    Close         RSI           %K             %D
 1. Clone the repo
 2. Download the requirements by running:``` pip install -r requirements.txt ```
 3. Run ``` python3 main.py ```
+
+
+If you want to learn more about interacting with Binance, you can visit
+https://github.com/sammchardy/python-binance
+
